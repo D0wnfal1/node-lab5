@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Material Assets List</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Employee</th>
+            <th>Room</th>
+            <th>Item Name</th>
+            <th>Issue Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(assets.length > 0) { %> <% assets.forEach(asset => { %>
+          <tr>
+            <td><%= asset.employee.name %></td>
+            <td><%= asset.employee.roomNumber %></td>
+            <td><%= asset.itemName %></td>
+            <td><%= new Date(asset.issueDate).toLocaleDateString() %></td>
+            <td>
+              <a
+                href="/assets/view/<%= asset._id %>"
+                class="btn btn-sm btn-info"
+                >View</a
+              >
+              <a
+                href="/assets/edit/<%= asset._id %>"
+                class="btn btn-sm btn-primary"
+                >Edit</a
+              >
+              <a
+                href="/assets/delete/<%= asset._id %>"
+                class="btn btn-sm btn-danger"
+                onclick="return confirm('Are you sure you want to delete this asset?')"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          <% }) %> <% } else { %>
+          <tr>
+            <td colspan="5" class="text-center">No assets found</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <a href="/assets/add" class="btn btn-success">Add New Asset</a>
+  </div>
+</div>

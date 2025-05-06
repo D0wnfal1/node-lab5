@@ -20,6 +20,4 @@ router.get("/delete/:id", assetController.deleteAsset);
 
 router.get("/api", assetController.getAssetsJson);
 
-router.get("/report/json", assetController.getAssetsReport);
-
 module.exports = router;
